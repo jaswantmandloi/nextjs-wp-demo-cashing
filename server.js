@@ -29,8 +29,42 @@ app.prepare().then(() => {
   //   return ssrCache({ req, res, pagePath, queryParams })
   // })
 
-  server.get('*', (req, res) => {
+  server.get('/', async (req, res) => {
+    console.log("Get request index");
+    const pagePath = "/index";
+    const queryParams = Object.assign(req.query, req.params);
+    const htmlResponse = await app.renderToHTML(
+      req,
+      res,
+      pagePath,
+      queryParams
+    );
+
+    console.log(htmlResponse);
+
+    return res.send(htmlResponse);
+  })
+
+  server.get('*', async (req, res) => {
     console.log('Get request')
+
+    //app.sendHTML(req, res, '<div>This is testing.</div>')
+
+    // return renderAndCache(req, res, '/post', Object.assign(
+    //   req.query,
+    //   req.params
+    // ));
+    // const pagePath = '/index'
+    // const queryParams = Object.assign(
+    //   req.query,
+    //   req.params
+    // )
+    // const htmlResponse = await app.renderToHTML(req, res, pagePath, queryParams)
+    
+    // //app.sendHTML(req, res, htmlResponse)
+
+    // res.send(htmlResponse)
+
     return handle(req, res);
   })
 
