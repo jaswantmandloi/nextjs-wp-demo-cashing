@@ -7,10 +7,13 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.0",
+    "@material-ui/lab": "^4.0.0-alpha.40",
     "cacheable-response": "^1.1.0",
-    "next-seo": "latest",
     "express": "^4.14.0",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "latest",
+    "next-seo": "latest",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },
